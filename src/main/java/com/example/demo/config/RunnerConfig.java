@@ -1,23 +1,16 @@
 package com.example.demo.config;
 
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.example.demo.dao.AdresseRepository;
 import com.example.demo.dao.CategorieRepository;
 import com.example.demo.dao.CommandeRepository;
-import com.example.demo.dao.EmailRepository;
 import com.example.demo.dao.EntrepriseRepository;
 import com.example.demo.dao.FormateurRepository;
 import com.example.demo.dao.FormationRepository;
 import com.example.demo.dao.InternauteRepository;
-import com.example.demo.dao.LienTestRepository;
 import com.example.demo.dao.NiveauRepository;
-import com.example.demo.dao.TelephoneRepository;
 import com.example.demo.entities.Adresse;
 import com.example.demo.entities.Categorie;
 import com.example.demo.entities.Commande;
@@ -63,17 +56,26 @@ public class RunnerConfig implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		nvRepository.saveAndFlush(new Niveau("xs"));
-		nvRepository.saveAndFlush(new Niveau("s"));
-		nvRepository.saveAndFlush(new Niveau("m"));
-		nvRepository.saveAndFlush(new Niveau("ml"));
-		nvRepository.saveAndFlush(new Niveau("l"));
-		nvRepository.saveAndFlush(new Niveau("xl"));
-		nvRepository.saveAndFlush(new Niveau("xxl"));
+		Formateur leFormateur = new Formateur("Sylvie", "Aubert", "sylvieaubert@gmail.fr", "0625451254");
+		Formateur leFormateur1 = new Formateur("Regina", "Santomatte", "@ReginaSantomattegmail.com", "0524585774");
+		Formateur leFormateur2 = new Formateur("Sisi", "Mosquito", "SisiMosquito@gmail.fr", "5235689545");
+		Formateur leFormateur3 = new Formateur("Carole", "Lamar", "LamarCarole@gmail.fr", "0256352457");
+		Formateur leFormateur4 = new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685");
+		Formateur leFormateur5 = new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845");
+		Formateur leFormateur6 = new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245");
+		Formateur leFormateur7 = new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878");
+		
+		nvRepository.save(new Niveau("xs"));
+		nvRepository.save(new Niveau("s"));
+		nvRepository.save(new Niveau("m"));
+		nvRepository.save(new Niveau("ml"));
+		nvRepository.save(new Niveau("l"));
+		nvRepository.save(new Niveau("xl"));
+		nvRepository.save(new Niveau("xxl"));
 
 		// Catégorie INITIALE
 		Categorie mere = new Categorie("Categories");
-		catRepository.saveAndFlush(mere);
+		catRepository.save(mere);
 
 		Categorie dev = new Categorie("Developpement", mere);
 		Categorie dev1 = new Categorie("Les bases de C++");
@@ -90,14 +92,14 @@ public class RunnerConfig implements CommandLineRunner {
 		dev5.setMere(dev);
 		dev6.setMere(dev);
 
-		catRepository.saveAndFlush(dev);
+		catRepository.save(dev);
 
-		catRepository.saveAndFlush(dev1);
-		catRepository.saveAndFlush(dev2);
-		catRepository.saveAndFlush(dev3);
-		catRepository.saveAndFlush(dev4);
-		catRepository.saveAndFlush(dev5);
-		catRepository.saveAndFlush(dev6);
+		catRepository.save(dev1);
+		catRepository.save(dev2);
+		catRepository.save(dev3);
+		catRepository.save(dev4);
+		catRepository.save(dev5);
+		catRepository.save(dev6);
 
 		Categorie sgbd = new Categorie("SGBD", mere);
 		Categorie sgbd1 = new Categorie("Mysql et requetes");
@@ -109,18 +111,18 @@ public class RunnerConfig implements CommandLineRunner {
 		sgbd3.setMere(sgbd);
 		sgbd4.setMere(sgbd);
 
-		catRepository.saveAndFlush(sgbd);
-		catRepository.saveAndFlush(sgbd1);
-		catRepository.saveAndFlush(sgbd2);
-		catRepository.saveAndFlush(sgbd3);
-		catRepository.saveAndFlush(sgbd4);
+		catRepository.save(sgbd);
+		catRepository.save(sgbd1);
+		catRepository.save(sgbd2);
+		catRepository.save(sgbd3);
+		catRepository.save(sgbd4);
 
 		Categorie ia = new Categorie("IA", mere);
 		Categorie ia1 = new Categorie("Réseau de neuronnes");
 		Categorie ia2 = new Categorie("BigData");
 		Categorie ia3 = new Categorie("Comment utiliser L'Ia");
 
-		catRepository.saveAndFlush(ia);
+		catRepository.save(ia);
 		ia1.setMere(ia);
 		ia2.setMere(ia);
 		ia3.setMere(ia);
@@ -139,16 +141,16 @@ public class RunnerConfig implements CommandLineRunner {
 
 		Categorie devsec = new Categorie("DevSecOps", mere);
 
-		catRepository.saveAndFlush(softskill);
-		catRepository.saveAndFlush(caodao);
-		catRepository.saveAndFlush(d3);
-		catRepository.saveAndFlush(secAdm);
-		catRepository.saveAndFlush(linuxAdmin);
-		catRepository.saveAndFlush(busi);
-		catRepository.saveAndFlush(devsec);
-		catRepository.saveAndFlush(ia1);
-		catRepository.saveAndFlush(ia2);
-		catRepository.saveAndFlush(ia3);
+		catRepository.save(softskill);
+		catRepository.save(caodao);
+		catRepository.save(d3);
+		catRepository.save(secAdm);
+		catRepository.save(linuxAdmin);
+		catRepository.save(busi);
+		catRepository.save(devsec);
+		catRepository.save(ia1);
+		catRepository.save(ia2);
+		catRepository.save(ia3);
 
 		List<Adresse> adresses1 = new ArrayList<Adresse>();
 		List<Adresse> adresses2 = new ArrayList<Adresse>();
@@ -162,25 +164,25 @@ public class RunnerConfig implements CommandLineRunner {
 		adresse1.setCp("83790");
 		adresse1.setVille("Pignans");
 		adresse1.setPays("france");
-		adrRepository.saveAndFlush(adresse1);
+		adrRepository.save(adresse1);
 
 		adresse2.setRue("avenue St Roch");
 		adresse2.setCp("06100");
 		adresse2.setVille("Nice");
 		adresse2.setPays("france");
-		adrRepository.saveAndFlush(adresse2);
+		adrRepository.save(adresse2);
 
 		adresse3.setRue("chemin de troie");
 		adresse3.setCp("75000");
 		adresse3.setVille("Paris 1");
 		adresse3.setPays("france");
-		adrRepository.saveAndFlush(adresse3);
+		adrRepository.save(adresse3);
 
 		adresse4.setRue("boulevard René Cassin");
 		adresse4.setCp("13127");
 		adresse4.setVille("Marseille");
 		adresse4.setPays("france");
-		adrRepository.saveAndFlush(adresse4);
+		adrRepository.save(adresse4);
 
 		adresses1.add(adresse1);
 		adresses1.add(adresse2);
@@ -195,45 +197,39 @@ public class RunnerConfig implements CommandLineRunner {
 		Commande commande1 = new Commande();
 		Commande commande2 = new Commande();
 		Commande commande3 = new Commande();
-		Formation f1 = new Formation("TYPES SCRIPT", "Developpez Angular Framework");
-//		f1.setCategorie(ia1);
-
-//		fmRepository.saveAndFlush(f1);
-		commande1.setFormation(f1);
+		
+		cmdRepository.save(commande);
+		cmdRepository.save(commande1);
+		cmdRepository.save(commande2);
+		cmdRepository.save(commande3);
+		
+		Formation f1 = new Formation(ia1,"TYPES SCRIPT", "Developpez Angular Framework", leFormateur);
+		fmRepository.save(f1);
+		
 		commande1.setSolde(15324D);
 
-		Formation f2 = new Formation("PHP", "Site Dynamique");
-//		f2.setCategorie(dev4);
+		Formation f2 = new Formation(ia2,"PHP", "Site Dynamique", leFormateur1);
 
-//		fmRepository.saveAndFlush(f2);
-		commande2.setFormation(f2);
+		fmRepository.save(f2);
 		commande2.setSolde(11002D);
 
-		Formation f3 = new Formation("PYTHON", "Developpez Django Framework");
-//		f3.setCategorie(dev4);
+		Formation f3 = new Formation(ia3,"PYTHON", "Developpez Django Framework",leFormateur2);
 
-//		fmRepository.saveAndFlush(f3);
-		commande3.setFormation(f3);
+		fmRepository.save(f3);
 		commande.setSolde(44425D);
 		commande3.setSolde(13245D);
 
-		Formation f0 = new Formation("JAVA JEE", "Devellopement SPRING BOOT");
-//		f0.setCategorie(dev6);
-//		fmRepository.saveAndFlush(f0);
-		commande.setFormation(f0);
+		Formation f0 = new Formation(ia,"JAVA JEE", "Devellopement SPRING BOOT",leFormateur3);
+		fmRepository.save(f0);
 
 		Formation formation = new Formation("Devenez développeur le Kotlin",
 				"Les bases et les bonnes pratiques du langage.");
 		formation.setDuree(42);
 		formation.setNiveau("xl");
-//		formation.setCategorie(dev5);
-//		fmRepository.saveAndFlush(formation);
+		formation.setCategorie(dev5);
+		fmRepository.save(formation);
 
-		cmdRepository.saveAndFlush(commande);
-		cmdRepository.saveAndFlush(commande1);
-		cmdRepository.saveAndFlush(commande2);
-		cmdRepository.saveAndFlush(commande3);
-
+		
 		internaute.setCurrentCommande(commande);
 
 		Entreprise entreprise = new Entreprise();
@@ -258,63 +254,55 @@ public class RunnerConfig implements CommandLineRunner {
 		i4.setAdresse(adresse3);
 		i6.setAdresse(adresse2);
 
-		internauteRepository.saveAndFlush(internaute);
-		internauteRepository.saveAndFlush(i1);
-		internauteRepository.saveAndFlush(i2);
-		internauteRepository.saveAndFlush(i3);
-		internauteRepository.saveAndFlush(i4);
-		internauteRepository.saveAndFlush(i5);
-		internauteRepository.saveAndFlush(i6);
-		internauteRepository.saveAndFlush(i7);
-		internauteRepository.saveAndFlush(i8);
+		internauteRepository.save(internaute);
+		internauteRepository.save(i1);
+		internauteRepository.save(i2);
+		internauteRepository.save(i3);
+		internauteRepository.save(i4);
+		internauteRepository.save(i5);
+		internauteRepository.save(i6);
+		internauteRepository.save(i7);
+		internauteRepository.save(i8);
 
-		entrepriseRepository.saveAndFlush(entreprise);
+		entrepriseRepository.save(entreprise);
 
-		frRepository.saveAndFlush(new Formateur("Lucas", "Lamar", "LucasLamar@gmail.com", "0625458724"));
-		frRepository.saveAndFlush(new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685"));
-		frRepository.saveAndFlush(new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845"));
-		frRepository.saveAndFlush(new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245"));
-		frRepository.saveAndFlush(new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878"));
-
-		Formateur leFormateur = new Formateur("Sylvie", "Aubert", "sylvieaubert@gmail.fr", "0625451254");
-		frRepository.saveAndFlush(leFormateur);
+		frRepository.save(new Formateur("Lucas", "Lamar", "LucasLamar@gmail.com", "0625458724"));
+		frRepository.save(new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685"));
+		frRepository.save(new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845"));
+		frRepository.save(new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245"));
+		frRepository.save(new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878"));
+		
+		frRepository.save(leFormateur);
 		leFormateur.setCategorie(devsec);
-		frRepository.saveAndFlush(leFormateur);
+		frRepository.save(leFormateur);
 
-		Formateur leFormateur1 = new Formateur("Regina", "Santomatte", "@ReginaSantomattegmail.com", "0524585774");
-		frRepository.saveAndFlush(leFormateur1);
+		frRepository.save(leFormateur1);
 		leFormateur1.setCategorie(ia);
-		frRepository.saveAndFlush(leFormateur1);
+		frRepository.save(leFormateur1);
 
-		Formateur leFormateur2 = new Formateur("Sisi", "Mosquito", "SisiMosquito@gmail.fr", "5235689545");
-		frRepository.saveAndFlush(leFormateur2);
+		frRepository.save(leFormateur2);
 		leFormateur2.setCategorie(sgbd2);
-		frRepository.saveAndFlush(leFormateur2);
+		frRepository.save(leFormateur2);
 
-		Formateur leFormateur3 = new Formateur("Carole", "Lamar", "LamarCarole@gmail.fr", "0256352457");
-		frRepository.saveAndFlush(leFormateur3);
+		frRepository.save(leFormateur3);
 		leFormateur3.setCategorie(sgbd3);
-		frRepository.saveAndFlush(leFormateur3);
+		frRepository.save(leFormateur3);
 
-		Formateur leFormateur4 = new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685");
-		frRepository.saveAndFlush(leFormateur4);
+		frRepository.save(leFormateur4);
 		leFormateur4.setCategorie(sgbd4);
-		frRepository.saveAndFlush(leFormateur4);
+		frRepository.save(leFormateur4);
 
-		Formateur leFormateur5 = new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845");
-		frRepository.saveAndFlush(leFormateur5);
+		frRepository.save(leFormateur5);
 		leFormateur5.setCategorie(linuxAdmin);
-		frRepository.saveAndFlush(leFormateur5);
+		frRepository.save(leFormateur5);
 
-		Formateur leFormateur6 = new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245");
-		frRepository.saveAndFlush(leFormateur6);
+		frRepository.save(leFormateur6);
 		leFormateur6.setCategorie(secAdm);
-		frRepository.saveAndFlush(leFormateur6);
+		frRepository.save(leFormateur6);
 
-		Formateur leFormateur7 = new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878");
-		frRepository.saveAndFlush(leFormateur7);
+		frRepository.save(leFormateur7);
 		leFormateur7.setCategorie(busi);
-		frRepository.saveAndFlush(leFormateur7);
+		frRepository.save(leFormateur7);
 
 		Adresse adresseFormation = new Adresse();
 		adresseFormation.setRue("chemin du pinçon");
@@ -325,49 +313,54 @@ public class RunnerConfig implements CommandLineRunner {
 		formation.setLieux(adresseFormation);
 		formation.setPrix(14235D);
 
-//		List<Formateur> formateurs = new ArrayList<>();
-//		formateurs.add(leFormateur3);
+		List<Formateur> formateurs = new ArrayList<>();
+		formateurs.add(leFormateur3);
 		formation.setFormateur(leFormateur7);
 
 		formation.setCategorie(devsec);
+		
+		System.out.println("*****************************************************");
+		System.out.println(formation.getCategorie());
+		System.out.println(formation.getFormateur());
+		
+		System.out.println("*****************************************************");
 
-		// commande2.getFormation().setCategorie(dev);
-		cmdRepository.saveAndFlush(commande2);
+		cmdRepository.save(commande2);
 
-		internauteRepository.saveAndFlush(new Internaute("Sophia", "calage", "xl"));
-		internauteRepository.saveAndFlush(new Internaute("Jerome", "leclerc", "l"));
-		internauteRepository.saveAndFlush(new Internaute("Charles", "saugier", "xs"));
-		internauteRepository.saveAndFlush(new Internaute("Loubna", "rameur", "s"));
-		internauteRepository.saveAndFlush(new Internaute("marwa", "carre", "xxl"));
-		internauteRepository.saveAndFlush(new Internaute("julie", "solies", "xl"));
+		internauteRepository.save(new Internaute("Sophia", "calage", "xl"));
+		internauteRepository.save(new Internaute("Jerome", "leclerc", "l"));
+		internauteRepository.save(new Internaute("Charles", "saugier", "xs"));
+		internauteRepository.save(new Internaute("Loubna", "rameur", "s"));
+		internauteRepository.save(new Internaute("marwa", "carre", "xxl"));
+		internauteRepository.save(new Internaute("julie", "solies", "xl"));
 
 		System.out.println("*******************************************************");
 		internauteRepository.findAll().forEach((p) -> {
 			System.out.println(p.getNom() + ", " + p.getPrenom());
 		});
 
-//		System.out.println("*******************************************************");
-//		cmdRepository.findAll().forEach((c) -> {
-//			Formation forma = c.getFormation();
-//			try {
-//				System.out.println(forma.getIntitule().toString() + ", " + forma.getDescriptif() + " : "
-//						+ (c.getSolde().toString()));
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//		});
+		System.out.println("*******************************************************");
+		cmdRepository.findAll().forEach((c) -> {
+			Formation forma = c.getFormation();
+			try {
+				System.out.println(forma.getIntitule().toString() + ", " + forma.getDescriptif() + " : "
+						+ (c.getSolde().toString()));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		});
+		
 //
-//		System.out.println("*******************************************************");
-//		Hibernate.initialize(fmRepository);
-//		fmRepository.findAll().forEach((fm) -> {
-//			System.out.println(fm.getIntitule().toString() + " :: " + fm.getDescriptif().toString());
-//			System.out.println(fm.getPrix() + " :: " + fm.getDuree());
-//			System.out.println("------------------------------------------------------");
-//			System.out.println("Size de getFormateurs(): "+fm.getFormateur().getNom());
-//		});
+		System.out.println("*******************************************************");
+		fmRepository.findAll().forEach((fm) -> {
+			System.out.println(fm.getIntitule().toString() + " :: " + fm.getDescriptif().toString());
+			System.out.println(fm.getPrix() + " :: " + fm.getDuree());
+			System.out.println("------------------------------------------------------");
+			System.out.println("Size de getFormateurs(): "+fm.getCategorie().getIntitule());
+			//System.out.println(fm.getFormateur().getPrenom());
+		});
 
 
 	}
-
 
 }

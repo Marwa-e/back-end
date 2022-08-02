@@ -15,6 +15,6 @@ public interface FormationRepository  extends JpaRepository<Formation, Long>{
 
 	Optional<List<Formation>> findByCategorieId(Long id);
 
-
+	List<Formation> findByFormateur(Long id);
 
 }

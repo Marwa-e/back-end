@@ -70,5 +70,11 @@ public class FormationsService implements IFormations {
 		// TODO Auto-generated method stub
 		return formationRepository.findByCategorieId(id);
 	}
+
+	@Override
+	public List<Formation> findByFormateur(Long id) {
+		// TODO Auto-generated method stub
+		return formationRepository.findByFormateur(id);
+	}
 	
 }

@@ -3,6 +3,7 @@ package com.example.demo.restController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import com.example.demo.entities.Formation;
 import com.example.demo.services.IFormations;
@@ -60,21 +61,17 @@ public class FormationRestController {
 	
 	@GetMapping("/formations/findByCategorieFormations/{id}")
 	public List<Formation> findByCategorieFormations(@PathVariable Long id) {
-		List<Formation> receptacle = this.showAll().getBody();
-		List<Formation> filtree = new ArrayList<Formation>();
-		
-			receptacle.forEach(r->{
-				try {
-					if ( r.getCategorie().getId() ==  id) {
-						filtree.add(r);
-					}
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-			});
+		List<Formation> receptacle = formationIFormation.findAll();
+		Stream<Formation> filtree = receptacle.stream().filter(c -> c.getFormateur().getId()==id);
 	
-		return filtree;
+		return filtree.toList();
 	}
+	
+	@GetMapping("/formations/findByFormateur/{id}")
+	public List<Formation> findByFormateur(@PathVariable Long id) {
+		
+		return formationIFormation.findByFormateur(id);
+	} 
 	
 	@PostMapping("/formations")
 	public ResponseEntity<Formation> save(@RequestBody Formation i) {

@@ -24,7 +24,7 @@ public class Formateur {
 
 	private String telephone;
 	
-	@ManyToOne (cascade = { CascadeType.MERGE, CascadeType.ALL })
+	@ManyToOne (cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private Categorie categorie;
 
 	public Formateur(String nom, String prenom) {
@@ -33,6 +33,17 @@ public class Formateur {
 		this.prenom = prenom;
 	}
 	
+	public Formateur(String nom, String prenom, String email, String telephone, Categorie categorie) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.categorie = categorie;
+	}
+
+
+
 	public Formateur(String nom, String prenom, String email, String telephone) {
 		super();
 		this.nom = nom;

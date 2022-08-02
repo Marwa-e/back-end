@@ -23,8 +23,8 @@ public class Commande {
 	
 	// c'est le client qui créer la commande
 	
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.ALL })
-	@JoinColumn(name="formation")
+	@ManyToOne(cascade =  CascadeType.ALL )
+	@JoinColumn(name = "formation_id")
 	private Formation formation;
 
 	@Temporal(TemporalType.DATE)

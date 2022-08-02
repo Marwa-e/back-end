@@ -22,5 +22,7 @@ public interface IFormations {
 
 	Optional<List<Formation>> findByCategorieFormations(Long id);
 
+	List<Formation> findByFormateur(Long id);
+
 
 }

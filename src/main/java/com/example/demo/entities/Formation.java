@@ -10,51 +10,61 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="formation")
+@Table(name = "formation")
 public class Formation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@ManyToOne(cascade = CascadeType.MERGE)
+
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "categorie_id")
 	private Categorie categorie;
-	
+
 	private String intitule;
-	
+
 	private String descriptif;
 
 	private int duree;
-	
+
 	private Date dateDebut;
-	
+
 	private double prix;
-	
+
 	private String niveau;
-	
+
 	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.ALL })
 	private Adresse lieux;
-	
+
 	private String lienTest;
-	
-	@ManyToOne(cascade = { CascadeType.MERGE})
+
+	@ManyToOne(cascade =  CascadeType.ALL )
+	@JoinColumn(name = "formateur_id")
 	private Formateur formateur;
-	
+
 	public Formation(String intitule, String descriptif) {
 		super();
 		this.intitule = intitule;
 		this.descriptif = descriptif;
 	}
-	
-	public Formation(String intitule,Categorie categorie, String descriptif, int duree, Date dateDebut, double prix, String niveau,
-			Adresse lieux, String lienTest) {
+
+	public Formation(Categorie categorie, String intitule, String descriptif, Formateur formateur) {
+		super();
+		this.categorie = categorie;
+		this.intitule = intitule;
+		this.descriptif = descriptif;
+		this.formateur = formateur;
+	}
+
+	public Formation(String intitule, Categorie categorie, String descriptif, int duree, Date dateDebut, double prix,
+			String niveau, Adresse lieux, String lienTest) {
 		super();
 		this.categorie = categorie;
 		this.intitule = intitule;
@@ -79,7 +89,6 @@ public class Formation {
 		this.id = id;
 	}
 
-	
 	public Categorie getCategorie() {
 		return categorie;
 	}
@@ -162,10 +171,9 @@ public class Formation {
 
 	@Override
 	public String toString() {
-		return "Formation [id=" + id + ", catégorie=" + categorie +", intitule=" + intitule + ", descriptif=" + descriptif + ", duree=" + duree
-				+ ", dateDebut=" + dateDebut + ", prix=" + prix + ", niveau=" + niveau + ", lieux=" + lieux
-				+ ", lienTest=" + lienTest + ", Formateur= " + formateur + "]";
+		return "Formation [id=" + id + ", catégorie=" + categorie + ", intitule=" + intitule + ", descriptif="
+				+ descriptif + ", duree=" + duree + ", dateDebut=" + dateDebut + ", prix=" + prix + ", niveau=" + niveau
+				+ ", lieux=" + lieux + ", lienTest=" + lienTest + ", Formateur= " + formateur + "]";
 	}
-	
 
 }
