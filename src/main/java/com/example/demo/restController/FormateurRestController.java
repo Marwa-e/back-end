@@ -36,6 +36,8 @@ public class FormateurRestController {
 		fm.setPrenom(target.getPrenom());
 		fm.setEmail(target.getEmail());
 		fm.setTelephone(target.getTelephone());
+		fm.setCategorie(target.getCategorie());
+		
 		
 		return new ResponseEntity<Formateur>(formateurService.saveOrUpdate(fm), HttpStatus.OK);
 	}

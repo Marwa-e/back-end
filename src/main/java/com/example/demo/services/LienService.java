@@ -24,8 +24,7 @@ public class LienService implements IService<LienTest> {
 	@Override
 	public LienTest saveOrUpdate(LienTest o) {
 		// TODO Auto-generated method stub
-		LienTest changedLienTest = new LienTest(o.getLien(),o.getCommentaires());
-		return ltRepository.save(changedLienTest);
+		return ltRepository.save(o);
 	}
 
 	@Override

@@ -23,10 +23,8 @@ public class TelephoneService implements IService<Telephone> {
 
 	@Override
 	public Telephone saveOrUpdate(Telephone o) {
-		Telephone changedTel = new Telephone();
-		changedTel.setNumero(o.getNumero());
-		// TODO Auto-generated method stub
-		return telRepository.save(changedTel);
+	
+		return telRepository.save(o);
 	}
 
 	@Override

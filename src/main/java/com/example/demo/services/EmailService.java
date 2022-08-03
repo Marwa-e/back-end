@@ -23,9 +23,8 @@ public class EmailService implements IService<Email> {
 
 	@Override
 	public Email saveOrUpdate(Email o) {
-		// TODO Auto-generated method stub
-		Email changedEmail = new Email(o.getEmail());
-		return emailRepository.save(changedEmail);
+		
+		return emailRepository.save(o);
 	}
 
 	@Override

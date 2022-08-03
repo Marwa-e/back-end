@@ -29,12 +29,12 @@ public class NiveauRestController {
 	@PutMapping("/niveaux/{id}")
 	public ResponseEntity<Niveau> modify(@PathVariable Long id, @RequestBody Niveau target) {
 
-		Niveau cat = niveauService.findById(id).orElseThrow(
+		Niveau niv = niveauService.findById(id).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Niveau not found with id : " + id));
 		
-		cat.setIntitule(target.getIntitule());
+		niv.setIntitule(target.getIntitule());
 		
-		return new ResponseEntity<Niveau>(niveauService.saveOrUpdate(cat), HttpStatus.OK);
+		return new ResponseEntity<Niveau>(niveauService.saveOrUpdate(niv), HttpStatus.OK);
 	}
 	
 	// http://localhost:8080/niveaux

@@ -65,11 +65,11 @@ public class Internaute extends Client {
 		this.prenom = prenom;
 	}
 
-	public String getString() {
+	public String getNiveau() {
 		return niveau;
 	}
 
-	public void setString(String niveau) {
+	public void setNiveau(String niveau) {
 		this.niveau = niveau;
 	}
 

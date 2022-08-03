@@ -33,6 +33,8 @@ public class LienTestRestController {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "LienTest not found with id : " + id));
 		
 		li.setLien(target.getLien());
+		li.setCommentaires(target.getCommentaires());
+		
 		
 		return new ResponseEntity<LienTest>(lienTestService.saveOrUpdate(li), HttpStatus.OK);
 	}

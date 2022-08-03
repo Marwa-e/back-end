@@ -27,14 +27,9 @@ public class FormateurService implements IService<Formateur> {
 	@Override
 	public Formateur saveOrUpdate(Formateur o) {
 		// TODO Auto-generated method stub
-		Formateur changedFormateur = new Formateur();
-		changedFormateur.setNom(o.getNom());
-		changedFormateur.setPrenom(o.getPrenom());
-		changedFormateur.setEmail(o.getEmail());
-		changedFormateur.setCategorie(o.getCategorie());
-		changedFormateur.setTelephone(o.getTelephone());
 		
-		return frmtrRepository.save(changedFormateur);
+		
+		return frmtrRepository.save(o);
 	}
 
 	@Override

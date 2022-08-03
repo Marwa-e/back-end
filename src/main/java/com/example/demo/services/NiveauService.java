@@ -24,8 +24,7 @@ public class NiveauService implements IService<Niveau> {
 	@Override
 	public Niveau saveOrUpdate(Niveau o) {
 		// TODO Auto-generated method stub
-		Niveau changedNiveau = new Niveau(o.getIntitule());
-		return nvRepository.save(changedNiveau);
+		return nvRepository.save(o);
 	}
 
 	@Override

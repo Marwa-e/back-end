@@ -40,6 +40,12 @@ public class FormationRestController {
 		fm.setDuree(target.getDuree());
 		fm.setPrix(target.getPrix());
 		fm.setDescriptif(target.getDescriptif());
+		fm.setCategorie(target.getCategorie());
+		fm.setDateDebut(target.getDateDebut());
+		fm.setFormateur(target.getFormateur());
+		fm.setLienTest(target.getLienTest());
+		fm.setLieux(target.getLieux());
+		fm.setNiveau(target.getNiveau());
 		
 		return new ResponseEntity<Formation>(formationIFormation.saveOrUpdate(fm), HttpStatus.OK);
 	}

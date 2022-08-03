@@ -24,13 +24,8 @@ public class AdresseService implements IAdresse<Adresse> {
 	@Override
 	public Adresse saveOrUpdate(Adresse o) {
 		// TODO Auto-generated method stub
-		Adresse changedAdr = new Adresse();
-		changedAdr.setRue(o.getRue());
-		changedAdr.setCp(o.getCp());
-		changedAdr.setVille(o.getVille());
-		changedAdr.setPays(o.getPays());
 		
-		return adrRepository.save(changedAdr);
+		return adrRepository.save(o);
 	}
 
 	@Override

@@ -24,11 +24,8 @@ public class CommandeService implements IService<Commande> {
 	@Override
 	public Commande saveOrUpdate(Commande o) {
 		// TODO Auto-generated method stub
-		Commande changedCommande = new Commande();
-		changedCommande.setFormation(o.getFormation());
-		changedCommande.setSolde(o.getSolde());
-		changedCommande.setDateValidation(o.getDateValidation());
-		return cmdRepository.save(changedCommande);
+		
+		return cmdRepository.save(o);
 	}
 
 	@Override

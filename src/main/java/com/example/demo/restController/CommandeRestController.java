@@ -33,6 +33,8 @@ public class CommandeRestController {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Commande not found with id : " + id));
 		
 		cm.setSolde(target.getSolde());
+		cm.setDateValidation(target.getDateValidation());
+		cm.setFormation(target.getFormation());
 		
 		return new ResponseEntity<Commande>(commandeService.saveOrUpdate(cm), HttpStatus.OK);
 	}

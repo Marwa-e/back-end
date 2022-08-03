@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.entities.Entreprise;
+import com.example.demo.entities.Internaute;
 import com.example.demo.services.IService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +33,19 @@ public class EntrepriseRestController {
 		Entreprise en = entrepriseService.findById(id).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Entreprise not found with id : " + id));
 		
+		en.setTelephone(target.getTelephone());
+		en.setPassword(target.getPassword());
+		en.setEmail(target.getEmail());
+		en.setContactEntreprisePrenom(target.getContactEntreprisePrenom());
+		en.setContactEntrepriseNom(target.getContactEntrepriseNom());
+		en.setAdresse(target.getAdresse());
 		en.setRaisonSociale(target.getRaisonSociale());
+		en.setHistoryOfCommands(target.getHistoryOfCommands());
+		en.setCurrentCommande(target.getCurrentCommande());
 		
 		return new ResponseEntity<Entreprise>(entrepriseService.saveOrUpdate(en), HttpStatus.OK);
 	}
 	
-	
-	// http://localhost:8080/entreprises
 	@GetMapping("/entreprises")
 	public ResponseEntity<List<Entreprise>> showAll() {
 		return new ResponseEntity<List<Entreprise>>(entrepriseService.findAll(), HttpStatus.OK);

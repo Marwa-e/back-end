@@ -36,6 +36,7 @@ public class CategorieRestController {
 		Categorie cat = categorieService.findById(id).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Categorie not found with id : " + id));
 		
+		cat.setMere(target.getMere());
 		cat.setIntitule(target.getIntitule());
 		
 		return new ResponseEntity<Categorie>(categorieService.saveOrUpdate(cat), HttpStatus.OK);
@@ -58,7 +59,10 @@ public class CategorieRestController {
 	}	
 	@GetMapping("/categories/findByMere/{id}")
 	public Optional<List<Categorie>> findByMere(@PathVariable Long id) {
+		//List<Categorie> result = categorieRepository.findAll().stream().filter(p-> p.getMere().getId()==id).toList();
+		
 		List<Categorie> result = categorieRepository.findAll();
+		
 		List<Categorie> filtreCategorie = new ArrayList<Categorie>();
 		result.forEach((p)->{
 			try {

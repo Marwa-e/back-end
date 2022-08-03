@@ -318,9 +318,11 @@ public class RunnerConfig implements CommandLineRunner {
 
 		formation.setCategorie(devsec);
 		commande2.setFormation(f0);
+		commande.setFormation(formation);
 		//commande2.setFormation(f1);
 
 		cmdRepository.save(commande2);
+		cmdRepository.save(commande);
 
 		internauteRepository.save(new Internaute("Sophia", "calage", "xl"));
 		internauteRepository.save(new Internaute("Jerome", "leclerc", "l"));

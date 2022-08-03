@@ -24,8 +24,8 @@ public class CategorieService implements IService<Categorie> {
 	@Override
 	public Categorie saveOrUpdate(Categorie o) {
 		// TODO Auto-generated method stub
-		Categorie changedCat = new Categorie(o.getIntitule());
-		return catRepository.save(changedCat);
+		
+		return catRepository.save(o);
 	}
 
 	@Override

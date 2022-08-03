@@ -24,15 +24,8 @@ public class InternauteService implements IService<Internaute>,InternauteService
 
 	@Override
 	public Internaute saveOrUpdate(Internaute o) {
-		// TODO Auto-generated method stub
-		Internaute changedInternaute = new Internaute();
-		
-		changedInternaute.setNom(o.getNom());
-		changedInternaute.setPrenom(o.getPrenom());
-		changedInternaute.setEmail(o.getEmail());
-		changedInternaute.setPassword(o.getPassword());
-		
-		return itRepository.save(changedInternaute);
+		// TODO Auto-generated method stub	
+		return itRepository.save(o);
 	}
 
 	@Override
@@ -60,7 +53,7 @@ public class InternauteService implements IService<Internaute>,InternauteService
 		return itRepository.findByNomContains(element);
 	}
 	@Override
-	public Optional<List<Internaute>> findByEmailContains(Email element) {
+	public Optional<List<Internaute>> findByEmailContains(String element) {
 		// TODO Auto-generated method stub
 		return itRepository.findByEmailContains(element);
 	}

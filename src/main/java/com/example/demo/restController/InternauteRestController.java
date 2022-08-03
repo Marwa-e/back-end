@@ -41,6 +41,11 @@ public class InternauteRestController {
 		it.setPrenom(target.getPrenom());
 		it.setEmail(target.getEmail());
 		it.setPassword(target.getPassword());
+		it.setAdresse(target.getAdresse());
+		it.setCurrentCommande(target.getCurrentCommande());
+		it.setHistoryOfCommands(target.getHistoryOfCommands());
+		it.setTelephone(target.getTelephone());
+		it.setNiveau(target.getNiveau());
 		
 		return new ResponseEntity<Internaute>(internauteService.saveOrUpdate(it), HttpStatus.OK);
 	}
@@ -59,13 +64,14 @@ public class InternauteRestController {
 	public Optional<List<Internaute>> findByNom(@PathVariable String nom) {
 		return internauteService.findByNomContains(nom);
 	}
+	
 	@GetMapping("/internautes/findByPrenom/{element}")
 	public Optional<List<Internaute>> findByPrenom(@PathVariable String element) {
 		return interServiceMetier.findByPrenomContains(element);
 	}
 	
 	@GetMapping("/internautes/findByEmail/{element}")
-	public Optional<List<Internaute>> findByEmail(@PathVariable Email element) {
+	public Optional<List<Internaute>> findByEmail(@PathVariable String element) {
 		
 		return interServiceMetier.findByEmailContains(element);
 	}

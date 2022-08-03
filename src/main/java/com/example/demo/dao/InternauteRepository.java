@@ -14,7 +14,7 @@ public interface InternauteRepository  extends JpaRepository<Internaute, Long>{
 
 	Optional<List<Internaute>> findByNomContains(String element);
 
-	Optional<List<Internaute>> findByEmailContains(Email element);
+	Optional<List<Internaute>> findByEmailContains(String element);
 	Optional<List<Internaute>> findByPrenomContains(String element);
 
 	

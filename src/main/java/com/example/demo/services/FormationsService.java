@@ -25,19 +25,8 @@ public class FormationsService implements IFormations {
 	@Override
 	public Formation saveOrUpdate(Formation o) {
 		// TODO Auto-generated method stub
-		Formation changedFormation = new Formation();
 		
-		changedFormation.setIntitule(o.getIntitule());
-		changedFormation.setDescriptif(o.getDescriptif());
-		changedFormation.setDuree(o.getDuree());
-		changedFormation.setLienTest(o.getLienTest());
-		changedFormation.setLieux(o.getLieux());
-		changedFormation.setPrix(o.getPrix());
-		changedFormation.setNiveau(o.getNiveau());
-		changedFormation.setFormateur(o.getFormateur());
-		changedFormation.setDateDebut(o.getDateDebut());
-		
-		return formationRepository.save(changedFormation);
+		return formationRepository.save(o);
 	}
 
 	@Override

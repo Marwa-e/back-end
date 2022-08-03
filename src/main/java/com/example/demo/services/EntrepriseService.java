@@ -25,13 +25,9 @@ public class EntrepriseService implements IService<Entreprise> {
 
 	@Override
 	public Entreprise saveOrUpdate(Entreprise o) {
-		Entreprise changedEnterprise = new Entreprise();
-		changedEnterprise.setRaisonSociale(o.getRaisonSociale());
-		changedEnterprise.setContactEntrepriseNom(o.getContactEntrepriseNom());
-		changedEnterprise.setContactEntreprisePrenom(o.getContactEntreprisePrenom());
-		changedEnterprise.setPassword(o.getPassword());
 		
-		return entrepriseRepository.save(changedEnterprise);
+		
+		return entrepriseRepository.save(o);
 	}
 
 	@Override
