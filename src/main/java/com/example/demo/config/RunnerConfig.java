@@ -27,7 +27,6 @@ import com.example.demo.entities.Role;
 import com.example.demo.entities.RoleName;
 import com.example.demo.entities.User;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -64,10 +63,11 @@ public class RunnerConfig implements CommandLineRunner {
 	private UserRepository userRepo;
 	
 	@Autowired
-	private RoleRepository roleRepo;
+	private PasswordEncoder encoder;
 	
 	@Autowired
-	private SecurityConfig securityConfig;
+	private RoleRepository roleRepo;
+	
 
 	public void addUsers(RoleName role, User user) {
 		RoleName roleName=role;
@@ -76,10 +76,16 @@ public class RunnerConfig implements CommandLineRunner {
 		Set<Role> roles = new HashSet<Role>();
 		roles.add(roleReturn);
 		user.setRoles(roles);
-		
-		//user.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
-		
+		user.setPassword(encoder.encode(user.getPassword()));	
 		userRepo.save(user);
+		System.out.println("-----------------------------------------------------------------------------------");
+		System.out.println("====> Utilisateur : "+user.getName()+", passwd : "+ user.getPassword());
+		System.out.print("Cet utilisateur possède les droitssuivants : ");
+		user.getRoles().forEach(v->{
+			System.out.println(v.getName());
+			});
+		System.out.println("-----------------------------------------------------------------------------------");
+
 	}
 	
 	@Override
