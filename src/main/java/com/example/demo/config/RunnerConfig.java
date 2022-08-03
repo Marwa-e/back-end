@@ -64,7 +64,7 @@ public class RunnerConfig implements CommandLineRunner {
 		Formateur leFormateur5 = new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845");
 		Formateur leFormateur6 = new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245");
 		Formateur leFormateur7 = new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878");
-		
+
 		nvRepository.save(new Niveau("xs"));
 		nvRepository.save(new Niveau("s"));
 		nvRepository.save(new Niveau("m"));
@@ -197,29 +197,29 @@ public class RunnerConfig implements CommandLineRunner {
 		Commande commande1 = new Commande();
 		Commande commande2 = new Commande();
 		Commande commande3 = new Commande();
-		
+
 		cmdRepository.save(commande);
 		cmdRepository.save(commande1);
 		cmdRepository.save(commande2);
 		cmdRepository.save(commande3);
-		
-		Formation f1 = new Formation(ia1,"TYPES SCRIPT", "Developpez Angular Framework", leFormateur);
+
+		Formation f1 = new Formation(ia1, "TYPES SCRIPT", "Developpez Angular Framework", leFormateur);
 		fmRepository.save(f1);
-		
+
 		commande1.setSolde(15324D);
 
-		Formation f2 = new Formation(ia2,"PHP", "Site Dynamique", leFormateur1);
+		Formation f2 = new Formation(ia2, "PHP", "Site Dynamique", leFormateur1);
 
 		fmRepository.save(f2);
 		commande2.setSolde(11002D);
 
-		Formation f3 = new Formation(ia3,"PYTHON", "Developpez Django Framework",leFormateur2);
+		Formation f3 = new Formation(ia3, "PYTHON", "Developpez Django Framework", leFormateur2);
 
 		fmRepository.save(f3);
 		commande.setSolde(44425D);
 		commande3.setSolde(13245D);
 
-		Formation f0 = new Formation(ia,"JAVA JEE", "Devellopement SPRING BOOT",leFormateur3);
+		Formation f0 = new Formation(ia, "JAVA JEE", "Devellopement SPRING BOOT", leFormateur3);
 		fmRepository.save(f0);
 
 		Formation formation = new Formation("Devenez développeur le Kotlin",
@@ -229,7 +229,6 @@ public class RunnerConfig implements CommandLineRunner {
 		formation.setCategorie(dev5);
 		fmRepository.save(formation);
 
-		
 		internaute.setCurrentCommande(commande);
 
 		Entreprise entreprise = new Entreprise();
@@ -271,7 +270,7 @@ public class RunnerConfig implements CommandLineRunner {
 		frRepository.save(new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845"));
 		frRepository.save(new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245"));
 		frRepository.save(new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878"));
-		
+
 		frRepository.save(leFormateur);
 		leFormateur.setCategorie(devsec);
 		frRepository.save(leFormateur);
@@ -318,12 +317,8 @@ public class RunnerConfig implements CommandLineRunner {
 		formation.setFormateur(leFormateur7);
 
 		formation.setCategorie(devsec);
-		
-		System.out.println("*****************************************************");
-		System.out.println(formation.getCategorie());
-		System.out.println(formation.getFormateur());
-		
-		System.out.println("*****************************************************");
+		commande2.setFormation(f0);
+		//commande2.setFormation(f1);
 
 		cmdRepository.save(commande2);
 
@@ -334,33 +329,51 @@ public class RunnerConfig implements CommandLineRunner {
 		internauteRepository.save(new Internaute("marwa", "carre", "xxl"));
 		internauteRepository.save(new Internaute("julie", "solies", "xl"));
 
-		System.out.println("*******************************************************");
+		System.out.println(
+				"***************************************************   LISTE DES INTERNAUTES  ********************************************************************");
 		internauteRepository.findAll().forEach((p) -> {
 			System.out.println(p.getNom() + ", " + p.getPrenom());
 		});
 
-		System.out.println("*******************************************************");
+		System.out.println(
+				"***************************************************   LISTE DES FORMATIONS EN COMMANDES  ********************************************************************");
 		cmdRepository.findAll().forEach((c) -> {
-			Formation forma = c.getFormation();
 			try {
-				System.out.println(forma.getIntitule().toString() + ", " + forma.getDescriptif() + " : "
-						+ (c.getSolde().toString()));
+				Formation forma = c.getFormation();
+				System.out.println(forma.getIntitule() + ", " + forma.getDescriptif() + " : " + (c.getSolde())+c.getId());
+
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("pas d'info");
 			}
+			
 		});
-		
+
 //
-		System.out.println("*******************************************************");
+		System.out.println(
+				"*************************************************************************************************************************************************");
+		System.out.println(
+				"***************************************************************  Les FORMATIONS *****************************************************************");
+		System.out.println(
+				"*************************************************************************************************************************************************");
+
 		fmRepository.findAll().forEach((fm) -> {
-			System.out.println(fm.getIntitule().toString() + " :: " + fm.getDescriptif().toString());
-			System.out.println(fm.getPrix() + " :: " + fm.getDuree());
-			System.out.println("------------------------------------------------------");
-			System.out.println("Size de getFormateurs(): "+fm.getCategorie().getIntitule());
-			//System.out.println(fm.getFormateur().getPrenom());
+			System.out.println("Intitule de la formation: " + fm.getIntitule().toString() + " :: "
+					+ fm.getDescriptif().toString());
+			System.out.println("Prix: " + fm.getPrix() + " :: Duree: " + fm.getDuree());
+			System.out.println("Intitule de la catégorie: " + fm.getCategorie().getIntitule() + " :: idCategorie: "
+					+ fm.getCategorie().getId() + "  ::  intituléCatégorieMere: "
+					+ fm.getCategorie().getMere().getIntitule() + "  ::  idCatégorieMere: "
+					+ fm.getCategorie().getMere().getId());
+			try {
+				System.out.println("FORMATEUR: " + fm.getFormateur().getPrenom() + ", " + fm.getFormateur().getNom());
+				System.out
+						.println("Catégorie(intitulé) du formateur: " + fm.getFormateur().getCategorie().getIntitule());
+			} catch (Exception e) {
+				System.out.println("Pas encore de formateur affecté");
+			}
+			System.out.println(
+					"---------------------------------------------------------------------------------------------------------------------------------------------");
 		});
-
-
 	}
 
 }
