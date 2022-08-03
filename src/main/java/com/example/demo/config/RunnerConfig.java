@@ -1,7 +1,9 @@
 package com.example.demo.config;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.example.demo.dao.AdresseRepository;
 import com.example.demo.dao.CategorieRepository;
@@ -11,6 +13,8 @@ import com.example.demo.dao.FormateurRepository;
 import com.example.demo.dao.FormationRepository;
 import com.example.demo.dao.InternauteRepository;
 import com.example.demo.dao.NiveauRepository;
+import com.example.demo.dao.RoleRepository;
+import com.example.demo.dao.UserRepository;
 import com.example.demo.entities.Adresse;
 import com.example.demo.entities.Categorie;
 import com.example.demo.entities.Commande;
@@ -19,10 +23,14 @@ import com.example.demo.entities.Formateur;
 import com.example.demo.entities.Formation;
 import com.example.demo.entities.Internaute;
 import com.example.demo.entities.Niveau;
+import com.example.demo.entities.Role;
+import com.example.demo.entities.RoleName;
+import com.example.demo.entities.User;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -51,7 +59,29 @@ public class RunnerConfig implements CommandLineRunner {
 
 	@Autowired
 	private FormateurRepository frRepository;
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private RoleRepository roleRepo;
+	
+	@Autowired
+	private SecurityConfig securityConfig;
 
+	public void addUsers(RoleName role, User user) {
+		RoleName roleName=role;
+		Role roleReturn = new Role(roleName);
+		roleRepo.save(roleReturn);
+		Set<Role> roles = new HashSet<Role>();
+		roles.add(roleReturn);
+		user.setRoles(roles);
+		
+		//user.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
+		
+		userRepo.save(user);
+	}
+	
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
@@ -376,6 +406,18 @@ public class RunnerConfig implements CommandLineRunner {
 			System.out.println(
 					"---------------------------------------------------------------------------------------------------------------------------------------------");
 		});
+		
+		System.out.println("********************************************* CREATION D'UN USER *****************************************************");
+		
+		
+		User blaisep = new User("Blaise", "Pascal", "blaisepascal@gmail.com", "sablespacial");
+		this.addUsers(RoleName.ROLE_USER, blaisep);
+		
+		System.out.println("********************************************* CREATION D'UN USER_ADMIN ***********************************************");
+		
+		User calemb = new User("Calembourg", "Ambres", "ambrescalembourg@gmail.com", "arboresclubgramme");
+		this.addUsers(RoleName.ROLE_ADMIN, calemb);
+		
 	}
 
 }
