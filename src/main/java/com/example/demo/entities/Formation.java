@@ -44,6 +44,8 @@ public class Formation {
 	private Adresse lieux;
 
 	private String lienTest;
+	
+	private String lienImage;
 
 	@ManyToOne(cascade =  CascadeType.ALL )
 	@JoinColumn(name = "formateur_id")
@@ -64,7 +66,7 @@ public class Formation {
 	}
 
 	public Formation(String intitule, Categorie categorie, String descriptif, int duree, Date dateDebut, double prix,
-			String niveau, Adresse lieux, String lienTest) {
+			String niveau, Adresse lieux, String lienTest, String lienImage) {
 		super();
 		this.categorie = categorie;
 		this.intitule = intitule;
@@ -75,6 +77,7 @@ public class Formation {
 		this.niveau = niveau;
 		this.lieux = lieux;
 		this.lienTest = lienTest;
+		this.lienImage = lienImage;
 	}
 
 	public Formation() {
@@ -87,6 +90,14 @@ public class Formation {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getLienImage() {
+		return lienImage;
+	}
+
+	public void setLienImage(String lienImage) {
+		this.lienImage = lienImage;
 	}
 
 	public Categorie getCategorie() {
@@ -171,9 +182,10 @@ public class Formation {
 
 	@Override
 	public String toString() {
-		return "Formation [id=" + id + ", catégorie=" + categorie + ", intitule=" + intitule + ", descriptif="
+		return "Formation [id=" + id + ", categorie=" + categorie + ", intitule=" + intitule + ", descriptif="
 				+ descriptif + ", duree=" + duree + ", dateDebut=" + dateDebut + ", prix=" + prix + ", niveau=" + niveau
-				+ ", lieux=" + lieux + ", lienTest=" + lienTest + ", Formateur= " + formateur + "]";
+				+ ", lieux=" + lieux + ", lienTest=" + lienTest + ", lienImage=" + lienImage + ", formateur="
+				+ formateur + "]";
 	}
 
 }
