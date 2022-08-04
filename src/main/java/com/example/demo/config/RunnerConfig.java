@@ -85,7 +85,11 @@ public class RunnerConfig implements CommandLineRunner {
 			System.out.println(v.getName());
 			});
 		System.out.println("-----------------------------------------------------------------------------------");
-
+	}
+	
+	public void addFormations(Categorie cat, String intitule, String descriptif,Formateur formateur) {
+		Formation f = new Formation(cat,intitule,descriptif,formateur);
+		fmRepository.save(f);
 	}
 	
 	@Override
@@ -99,7 +103,15 @@ public class RunnerConfig implements CommandLineRunner {
 		Formateur leFormateur4 = new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685");
 		Formateur leFormateur5 = new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845");
 		Formateur leFormateur6 = new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245");
-		Formateur leFormateur7 = new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878");
+		Formateur leFormateur7 = new Formateur("julien", "cerise", "cerisejulien@gmail.com", "0635245878");
+		Formateur leFormateur8 = new Formateur("carole", "legay", "carolelegay@gmail.com", "0635245878");
+		Formateur leFormateur9 = new Formateur("fabrice", "pasgrave", "pasgravefabrice@gmail.com", "0635245878");
+		Formateur leFormateur10 = new Formateur("roberto", "apeuprès", "apeuprèsroberto@gmail.com", "0635245878");
+		Formateur leFormateur11 = new Formateur("cassandre", "sauver", "sauvercassandre@gmail.com", "0635245878");
+		Formateur leFormateur12 = new Formateur("gilles", "deville", "devillegilles@gmail.com", "0635245878");
+		Formateur leFormateur13 = new Formateur("soufiane", "radjani", "radjanisoufiane@gmail.com", "0635245878");
+		Formateur leFormateur14 = new Formateur("didier", "onnesentpasle", "onnesentpasledidier@gmail.com", "0635245878");
+		Formateur leFormateur15 = new Formateur("marwa", "mage", "magemarwa@gmail.com", "0635245878");
 
 		nvRepository.save(new Niveau("xs"));
 		nvRepository.save(new Niveau("s"));
@@ -226,7 +238,7 @@ public class RunnerConfig implements CommandLineRunner {
 		adresses2.add(adresse3);
 		adresses2.add(adresse4);
 
-//		Internaute internaute = new Internaute("Eric", "bruneau", "ml");
+//		Internaute internaute = new Internaute();
 //		internaute.setEmail("ericbruneau@gmail.com");
 
 		Commande commande = new Commande();
@@ -264,6 +276,17 @@ public class RunnerConfig implements CommandLineRunner {
 		formation.setNiveau("xl");
 		formation.setCategorie(dev5);
 		fmRepository.save(formation);
+		
+		
+		this.addFormations(dev1, "bash linux script","Devenez un expert de la console linux et du scripting en BASH", leFormateur8);
+		this.addFormations(dev, "Xcode et Swift","Créez vos applis sur iphone, macBook", leFormateur9);
+		this.addFormations(sgbd, "bash linux script","Devenez un expert de la console linux et du scripting en BASH", leFormateur10);
+		this.addFormations(softskill, "bash linux script","Devenez un expert de la console linux et du scripting en BASH", leFormateur11);
+		this.addFormations(caodao, "UnrealEngine","Crééz vos propres animations", leFormateur12);
+		this.addFormations(ia3, "Les réseaux de neurones", "De l'analyse des BigDatas aux réseaux de neurones", leFormateur13);
+		this.addFormations(caodao, "Suite Adobe","Devenez un expert de l'illustration", leFormateur14);
+		this.addFormations(secAdm, "linux sécurité","Veille des consoles de Log du serveur", leFormateur15);
+		
 
 //		internaute.setCurrentCommande(commande);
 //
