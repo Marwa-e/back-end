@@ -58,40 +58,41 @@ public class RunnerConfig implements CommandLineRunner {
 
 	@Autowired
 	private FormateurRepository frRepository;
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	private PasswordEncoder encoder;
-	
+
 	@Autowired
 	private RoleRepository roleRepo;
-	
 
 	public void addUsers(RoleName role, User user) {
-		RoleName roleName=role;
+		RoleName roleName = role;
 		Role roleReturn = new Role(roleName);
 		roleRepo.save(roleReturn);
 		Set<Role> roles = new HashSet<Role>();
 		roles.add(roleReturn);
 		user.setRoles(roles);
-		user.setPassword(encoder.encode(user.getPassword()));	
+		user.setPassword(encoder.encode(user.getPassword()));
 		userRepo.save(user);
 		System.out.println("-----------------------------------------------------------------------------------");
-		System.out.println("====> Utilisateur : "+user.getUsername()+", passwd : "+ user.getPassword());
+		System.out.println("====> Utilisateur : " + user.getUsername() + ", passwd : " + user.getPassword());
 		System.out.print("Cet utilisateur possède les droitssuivants : ");
-		user.getRoles().forEach(v->{
+		user.getRoles().forEach(v -> {
 			System.out.println(v.getName());
-			});
+		});
 		System.out.println("-----------------------------------------------------------------------------------");
 	}
-	
-	public void addFormations(Categorie cat, String intitule, String descriptif,Formateur formateur) {
-		Formation f = new Formation(cat,intitule,descriptif,formateur);
+
+	public void addFormations(Categorie cat, String intitule, String descriptif, Formateur formateur,
+			String lienImage) {
+		Formation f = new Formation(cat, intitule, descriptif, formateur);
+		f.setLienImage(lienImage);
 		fmRepository.save(f);
 	}
-	
+
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
@@ -110,7 +111,8 @@ public class RunnerConfig implements CommandLineRunner {
 		Formateur leFormateur11 = new Formateur("cassandre", "sauver", "sauvercassandre@gmail.com", "0635245878");
 		Formateur leFormateur12 = new Formateur("gilles", "deville", "devillegilles@gmail.com", "0635245878");
 		Formateur leFormateur13 = new Formateur("soufiane", "radjani", "radjanisoufiane@gmail.com", "0635245878");
-		Formateur leFormateur14 = new Formateur("didier", "onnesentpasle", "onnesentpasledidier@gmail.com", "0635245878");
+		Formateur leFormateur14 = new Formateur("didier", "onnesentpasle", "onnesentpasledidier@gmail.com",
+				"0635245878");
 		Formateur leFormateur15 = new Formateur("marwa", "mage", "magemarwa@gmail.com", "0635245878");
 
 		nvRepository.save(new Niveau("xs"));
@@ -252,41 +254,51 @@ public class RunnerConfig implements CommandLineRunner {
 		cmdRepository.save(commande3);
 
 		Formation f1 = new Formation(ia1, "TYPES SCRIPT", "Developpez Angular Framework", leFormateur);
+		f1.setLienImage("https://unsplash.com/photos/OqtafYT5kTw");
 		fmRepository.save(f1);
 
 		commande1.setSolde(15324D);
 
 		Formation f2 = new Formation(ia2, "PHP", "Site Dynamique", leFormateur1);
-
+		f2.setLienImage("https://unsplash.com/photos/XJXWbfSo2f0");
 		fmRepository.save(f2);
 		commande2.setSolde(11002D);
 
 		Formation f3 = new Formation(ia3, "PYTHON", "Developpez Django Framework", leFormateur2);
-
+		f3.setLienImage("https://unsplash.com/photos/5QgIuuBxKwM");
 		fmRepository.save(f3);
 		commande.setSolde(44425D);
 		commande3.setSolde(13245D);
 
 		Formation f0 = new Formation(ia, "JAVA JEE", "Devellopement SPRING BOOT", leFormateur3);
+		f0.setLienImage("https://unsplash.com/photos/CPs2X8JYmS8");
 		fmRepository.save(f0);
 
 		Formation formation = new Formation("Devenez développeur le Kotlin",
 				"Les bases et les bonnes pratiques du langage.");
+		formation.setLienImage("https://unsplash.com/photos/FVgECvTjlBQ");
 		formation.setDuree(42);
 		formation.setNiveau("xl");
 		formation.setCategorie(dev5);
 		fmRepository.save(formation);
-		
-		
-		this.addFormations(dev1, "bash linux script","Devenez un expert de la console linux et du scripting en BASH", leFormateur8);
-		this.addFormations(dev, "Xcode et Swift","Créez vos applis sur iphone, macBook", leFormateur9);
-		this.addFormations(sgbd, "bash linux script","Devenez un expert de la console linux et du scripting en BASH", leFormateur10);
-		this.addFormations(softskill, "bash linux script","Devenez un expert de la console linux et du scripting en BASH", leFormateur11);
-		this.addFormations(caodao, "UnrealEngine","Crééz vos propres animations", leFormateur12);
-		this.addFormations(ia3, "Les réseaux de neurones", "De l'analyse des BigDatas aux réseaux de neurones", leFormateur13);
-		this.addFormations(caodao, "Suite Adobe","Devenez un expert de l'illustration", leFormateur14);
-		this.addFormations(secAdm, "linux sécurité","Veille des consoles de Log du serveur", leFormateur15);
-		
+
+		this.addFormations(dev1, "bash linux script", "Devenez un expert de la console linux et du scripting en BASH",
+				leFormateur8, "https://unsplash.com/photos/HeQswh6F3Uw");
+		this.addFormations(dev, "Xcode et Swift", "Créez vos applis sur iphone, macBook", leFormateur9,
+				"https://unsplash.com/photos/ByRokCRLWKs");
+		this.addFormations(sgbd, "bash linux script", "Devenez un expert de la console linux et du scripting en BASH",
+				leFormateur10, "https://unsplash.com/photos/sCgQPQZAeO4");
+		this.addFormations(softskill, "bash linux script",
+				"Devenez un expert de la console linux et du scripting en BASH", leFormateur11,
+				"https://unsplash.com/photos/c-dn31tcjsM");
+		this.addFormations(caodao, "UnrealEngine", "Crééz vos propres animations", leFormateur12,
+				"https://unsplash.com/photos/BG1_tWNzaxg");
+		this.addFormations(ia3, "Les réseaux de neurones", "De l'analyse des BigDatas aux réseaux de neurones",
+				leFormateur13, "https://unsplash.com/photos/uD_nTJuZaiY");
+		this.addFormations(caodao, "Suite Adobe", "Devenez un expert de l'illustration", leFormateur14,
+				"https://unsplash.com/photos/NmSPbe0bDtc");
+		this.addFormations(secAdm, "linux sécurité", "Veille des consoles de Log du serveur", leFormateur15,
+				"https://unsplash.com/photos/g7UfI6Xsi7o");
 
 //		internaute.setCurrentCommande(commande);
 //
@@ -378,7 +390,7 @@ public class RunnerConfig implements CommandLineRunner {
 		formation.setCategorie(devsec);
 		commande2.setFormation(f0);
 		commande.setFormation(formation);
-		//commande2.setFormation(f1);
+		// commande2.setFormation(f1);
 
 		cmdRepository.save(commande2);
 		cmdRepository.save(commande);
@@ -401,12 +413,13 @@ public class RunnerConfig implements CommandLineRunner {
 		cmdRepository.findAll().forEach((c) -> {
 			try {
 				Formation forma = c.getFormation();
-				System.out.println(forma.getIntitule() + ", " + forma.getDescriptif() + " : " + (c.getSolde())+c.getId());
+				System.out.println(
+						forma.getIntitule() + ", " + forma.getDescriptif() + " : " + (c.getSolde()) + c.getId());
 
 			} catch (Exception e) {
 				System.out.println("pas d'info");
 			}
-			
+
 		});
 
 //
@@ -435,18 +448,19 @@ public class RunnerConfig implements CommandLineRunner {
 			System.out.println(
 					"---------------------------------------------------------------------------------------------------------------------------------------------");
 		});
-		
-		System.out.println("********************************************* CREATION D'UN USER *****************************************************");
-		
-		
+
+		System.out.println(
+				"********************************************* CREATION D'UN USER *****************************************************");
+
 		User blaisep = new User("Pascal", "blaisepascal@gmail.com", "sablespacial");
 		this.addUsers(RoleName.ROLE_USER, blaisep);
-		
-		System.out.println("********************************************* CREATION D'UN USER_ADMIN ***********************************************");
-		
+
+		System.out.println(
+				"********************************************* CREATION D'UN USER_ADMIN ***********************************************");
+
 		User calemb = new User("Ambres", "ambrescalembourg@gmail.com", "arboresclubgramme");
 		this.addUsers(RoleName.ROLE_ADMIN, calemb);
-		
+
 	}
 
 }
