@@ -79,7 +79,7 @@ public class RunnerConfig implements CommandLineRunner {
 		user.setPassword(encoder.encode(user.getPassword()));	
 		userRepo.save(user);
 		System.out.println("-----------------------------------------------------------------------------------");
-		System.out.println("====> Utilisateur : "+user.getName()+", passwd : "+ user.getPassword());
+		System.out.println("====> Utilisateur : "+user.getUsername()+", passwd : "+ user.getPassword());
 		System.out.print("Cet utilisateur possède les droitssuivants : ");
 		user.getRoles().forEach(v->{
 			System.out.println(v.getName());
@@ -226,8 +226,8 @@ public class RunnerConfig implements CommandLineRunner {
 		adresses2.add(adresse3);
 		adresses2.add(adresse4);
 
-		Internaute internaute = new Internaute("Eric", "bruneau", "ml");
-		internaute.setEmail("ericbruneau@gmail.com");
+//		Internaute internaute = new Internaute("Eric", "bruneau", "ml");
+//		internaute.setEmail("ericbruneau@gmail.com");
 
 		Commande commande = new Commande();
 		Commande commande1 = new Commande();
@@ -265,41 +265,41 @@ public class RunnerConfig implements CommandLineRunner {
 		formation.setCategorie(dev5);
 		fmRepository.save(formation);
 
-		internaute.setCurrentCommande(commande);
+//		internaute.setCurrentCommande(commande);
+//
+//		Entreprise entreprise = new Entreprise();
+//		entreprise.setRaisonSociale("LE MONDE DES BISOUNOURS");
+//		entreprise.setContactEntrepriseNom("LEMOINS");
+//		entreprise.setContactEntreprisePrenom("ludovic");
+//		internaute.setTelephone("0425658985");
 
-		Entreprise entreprise = new Entreprise();
-		entreprise.setRaisonSociale("LE MONDE DES BISOUNOURS");
-		entreprise.setContactEntrepriseNom("LEMOINS");
-		entreprise.setContactEntreprisePrenom("ludovic");
-		internaute.setTelephone("0425658985");
+		Internaute i1 = new Internaute("Jojo", "j@j.fr", "12345678", "Georges", "De La Jungle", "s");
+//		Internaute i2 = new Internaute("Sisi", "L'impératrice", "l");
+//		Internaute i3 = new Internaute("Sacha", "Faitout", "s");
+//		Internaute i4 = new Internaute("Armand", "lucier", "xxxl");
+//		Internaute i5 = new Internaute("farah", "Mineuse", "xxl");
+//		Internaute i6 = new Internaute("Talaron", "delphine", "xs");
+//		Internaute i7 = new Internaute("Sigmund", "Freud", "s");
+//		Internaute i8 = new Internaute("Georges", "Washington", "xl");
 
-		Internaute i1 = new Internaute("Georges", "De La Jungle", "s");
-		Internaute i2 = new Internaute("Sisi", "L'impératrice", "l");
-		Internaute i3 = new Internaute("Sacha", "Faitout", "s");
-		Internaute i4 = new Internaute("Armand", "lucier", "xxxl");
-		Internaute i5 = new Internaute("farah", "Mineuse", "xxl");
-		Internaute i6 = new Internaute("Talaron", "delphine", "xs");
-		Internaute i7 = new Internaute("Sigmund", "Freud", "s");
-		Internaute i8 = new Internaute("Georges", "Washington", "xl");
+//		i8.setAdresse(adresse4);
+//		i8.setTelephone("0425125474");
+//		i8.setEmail("georgesWash@gmail.com");
+//
+//		i4.setAdresse(adresse3);
+//		i6.setAdresse(adresse2);
 
-		i8.setAdresse(adresse4);
-		i8.setTelephone("0425125474");
-		i8.setEmail("georgesWash@gmail.com");
-
-		i4.setAdresse(adresse3);
-		i6.setAdresse(adresse2);
-
-		internauteRepository.save(internaute);
-		internauteRepository.save(i1);
-		internauteRepository.save(i2);
-		internauteRepository.save(i3);
-		internauteRepository.save(i4);
-		internauteRepository.save(i5);
-		internauteRepository.save(i6);
-		internauteRepository.save(i7);
-		internauteRepository.save(i8);
-
-		entrepriseRepository.save(entreprise);
+//		internauteRepository.save(internaute);
+////		internauteRepository.save(i1);
+////		internauteRepository.save(i2);
+////		internauteRepository.save(i3);
+////		internauteRepository.save(i4);
+////		internauteRepository.save(i5);
+////		internauteRepository.save(i6);
+////		internauteRepository.save(i7);
+////		internauteRepository.save(i8);
+//
+//		entrepriseRepository.save(entreprise);
 
 		frRepository.save(new Formateur("Lucas", "Lamar", "LucasLamar@gmail.com", "0625458724"));
 		frRepository.save(new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685"));
@@ -360,12 +360,12 @@ public class RunnerConfig implements CommandLineRunner {
 		cmdRepository.save(commande2);
 		cmdRepository.save(commande);
 
-		internauteRepository.save(new Internaute("Sophia", "calage", "xl"));
-		internauteRepository.save(new Internaute("Jerome", "leclerc", "l"));
-		internauteRepository.save(new Internaute("Charles", "saugier", "xs"));
-		internauteRepository.save(new Internaute("Loubna", "rameur", "s"));
-		internauteRepository.save(new Internaute("marwa", "carre", "xxl"));
-		internauteRepository.save(new Internaute("julie", "solies", "xl"));
+//		internauteRepository.save(new Internaute("Sophia", "calage", "xl"));
+//		internauteRepository.save(new Internaute("Jerome", "leclerc", "l"));
+//		internauteRepository.save(new Internaute("Charles", "saugier", "xs"));
+//		internauteRepository.save(new Internaute("Loubna", "rameur", "s"));
+//		internauteRepository.save(new Internaute("marwa", "carre", "xxl"));
+//		internauteRepository.save(new Internaute("julie", "solies", "xl"));
 
 		System.out.println(
 				"***************************************************   LISTE DES INTERNAUTES  ********************************************************************");
@@ -416,12 +416,12 @@ public class RunnerConfig implements CommandLineRunner {
 		System.out.println("********************************************* CREATION D'UN USER *****************************************************");
 		
 		
-		User blaisep = new User("Blaise", "Pascal", "blaisepascal@gmail.com", "sablespacial");
+		User blaisep = new User("Pascal", "blaisepascal@gmail.com", "sablespacial");
 		this.addUsers(RoleName.ROLE_USER, blaisep);
 		
 		System.out.println("********************************************* CREATION D'UN USER_ADMIN ***********************************************");
 		
-		User calemb = new User("Calembourg", "Ambres", "ambrescalembourg@gmail.com", "arboresclubgramme");
+		User calemb = new User("Ambres", "ambrescalembourg@gmail.com", "arboresclubgramme");
 		this.addUsers(RoleName.ROLE_ADMIN, calemb);
 		
 	}
