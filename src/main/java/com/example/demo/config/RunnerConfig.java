@@ -90,6 +90,7 @@ public class RunnerConfig implements CommandLineRunner {
 			String lienImage) {
 		Formation f = new Formation(cat, intitule, descriptif, formateur);
 		f.setLienImage(lienImage);
+		f.setPrix(15000D);
 		fmRepository.save(f);
 	}
 
