@@ -69,6 +69,7 @@ public class RunnerConfig implements CommandLineRunner {
 	private RoleRepository roleRepo;
 
 	public void addUsers(RoleName role, User user) {
+		
 		RoleName roleName = role;
 		Role roleReturn = new Role(roleName);
 		roleRepo.save(roleReturn);
