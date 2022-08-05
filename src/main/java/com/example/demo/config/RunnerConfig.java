@@ -99,23 +99,22 @@ public class RunnerConfig implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Formateur leFormateur = new Formateur("Sylvie", "Aubert", "sylvieaubert@gmail.fr", "0625451254");
-		Formateur leFormateur1 = new Formateur("Regina", "Santomatte", "@ReginaSantomattegmail.com", "0524585774");
-		Formateur leFormateur2 = new Formateur("Sisi", "Mosquito", "SisiMosquito@gmail.fr", "5235689545");
-		Formateur leFormateur3 = new Formateur("Carole", "Lamar", "LamarCarole@gmail.fr", "0256352457");
-		Formateur leFormateur4 = new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685");
-		Formateur leFormateur5 = new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845");
-		Formateur leFormateur6 = new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245");
-		Formateur leFormateur7 = new Formateur("julien", "cerise", "cerisejulien@gmail.com", "0635245878");
-		Formateur leFormateur8 = new Formateur("carole", "legay", "carolelegay@gmail.com", "0635245878");
-		Formateur leFormateur9 = new Formateur("fabrice", "pasgrave", "pasgravefabrice@gmail.com", "0635245878");
-		Formateur leFormateur10 = new Formateur("roberto", "apeuprès", "apeuprèsroberto@gmail.com", "0635245878");
-		Formateur leFormateur11 = new Formateur("cassandre", "sauver", "sauvercassandre@gmail.com", "0635245878");
-		Formateur leFormateur12 = new Formateur("gilles", "deville", "devillegilles@gmail.com", "0635245878");
-		Formateur leFormateur13 = new Formateur("soufiane", "radjani", "radjanisoufiane@gmail.com", "0635245878");
-		Formateur leFormateur14 = new Formateur("didier", "onnesentpasle", "onnesentpasledidier@gmail.com",
-				"0635245878");
-		Formateur leFormateur15 = new Formateur("marwa", "mage", "magemarwa@gmail.com", "0635245878");
+		Formateur leFormateur = new Formateur("Sylvie", "Aubert", "sylvieaubert@gmail.fr", "0625451254","./assets/img/team-1.jpg");
+		Formateur leFormateur1 = new Formateur("Regina", "Santomatte", "@ReginaSantomattegmail.com", "0524585774","./assets/img/team-2.jpg");
+		Formateur leFormateur2 = new Formateur("Sisi", "Mosquito", "SisiMosquito@gmail.fr", "5235689545","./assets/img/team-3.jpg");
+		Formateur leFormateur3 = new Formateur("Carole", "Lamar", "LamarCarole@gmail.fr", "0256352457","./assets/img/team-4.jpg");
+		Formateur leFormateur4 = new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685","./assets/img/team-5.jpg");
+		Formateur leFormateur5 = new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845","./assets/img/team-6.jpg");
+		Formateur leFormateur6 = new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245","./assets/img/team-7.jpg");
+		Formateur leFormateur7 = new Formateur("julien", "cerise", "cerisejulien@gmail.com", "0635245878","./assets/img/team-8.jpg");
+		Formateur leFormateur8 = new Formateur("carole", "legay", "carolelegay@gmail.com", "0635245878","./assets/img/team-9.jpg");
+		Formateur leFormateur9 = new Formateur("fabrice", "pasgrave", "pasgravefabrice@gmail.com", "0635245878","./assets/img/team-10.jpg");
+		Formateur leFormateur10 = new Formateur("roberto", "apeuprès", "apeuprèsroberto@gmail.com", "0635245878","./assets/img/team-11.jpg");
+		Formateur leFormateur11 = new Formateur("cassandre", "sauver", "sauvercassandre@gmail.com", "0635245878","./assets/img/team-12.jpg");
+		Formateur leFormateur12 = new Formateur("gilles", "deville", "devillegilles@gmail.com", "0635245878","./assets/img/team-13.jpg");
+		Formateur leFormateur13 = new Formateur("soufiane", "radjani", "radjanisoufiane@gmail.com", "0635245878","./assets/img/team-14.jpg");
+		Formateur leFormateur14 = new Formateur("didier", "onnesentpasle", "onnesentpasledidier@gmail.com","0635245878","./assets/img/team-15.jpg");
+		Formateur leFormateur15 = new Formateur("marwa", "mage", "magemarwa@gmail.com", "0635245878","./assets/img/team-16.jpg");
 
 		nvRepository.save(new Niveau("xs"));
 		nvRepository.save(new Niveau("s"));
@@ -338,11 +337,11 @@ public class RunnerConfig implements CommandLineRunner {
 //
 //		entrepriseRepository.save(entreprise);
 
-		frRepository.save(new Formateur("Lucas", "Lamar", "LucasLamar@gmail.com", "0625458724"));
-		frRepository.save(new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685"));
-		frRepository.save(new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845"));
-		frRepository.save(new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245"));
-		frRepository.save(new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878"));
+		frRepository.save(new Formateur("Lucas", "Lamar", "LucasLamar@gmail.com", "0625458724","./assets/img/team-17.jpg"));
+		frRepository.save(new Formateur("Gilles", "Lamar", "LamarGilles@gmail.com", "5241253685","./assets/img/team-18.jpg"));
+		frRepository.save(new Formateur("robert", "silous", "robertsilous@gmail.fr", "4125457845","./assets/img/team-19.jpg"));
+		frRepository.save(new Formateur("eric", "frutier", "ericfrutier@gmail.fr", "1245021245","./assets/img/team-20.jpg"));
+		frRepository.save(new Formateur("gaëlle", "Lamar", "Lamargaëlle@gmail.com", "0635245878","./assets/img/team-21.jpg"));
 
 		frRepository.save(leFormateur);
 		leFormateur.setCategorie(devsec);

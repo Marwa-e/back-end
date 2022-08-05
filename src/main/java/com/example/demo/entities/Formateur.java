@@ -26,6 +26,8 @@ public class Formateur {
 	
 	@ManyToOne (cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private Categorie categorie;
+	
+	private String lienPhoto;
 
 	public Formateur(String nom, String prenom) {
 		super();
@@ -44,16 +46,26 @@ public class Formateur {
 
 
 
-	public Formateur(String nom, String prenom, String email, String telephone) {
+	public Formateur(String nom, String prenom, String email, String telephone,String lienPhoto) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
+		this.lienPhoto = lienPhoto;
 	}
 
 	public Formateur() {
 		super();
+	}
+	
+
+	public String getLienPhoto() {
+		return lienPhoto;
+	}
+
+	public void setLienPhoto(String lienPhoto) {
+		this.lienPhoto = lienPhoto;
 	}
 
 	public Long getId() {
